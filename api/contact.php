@@ -14,7 +14,10 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     $subject = "Website Enquiry";
     $headers = "From: noreply@vanzylmedia.com";
     
-    $body = "Some message";
+    $body = "NAME: " . $_GET['name'] . "\n\n";
+    $body .= "EMAIL: " . $_GET['email'] . "\n\n";
+    $body .= "PHONE: " . $_GET['phone'] . "\n\n";
+    $body .= "MESSAGE: " . $_GET['message'] . "\n\n";
     
     $data['success'] = false;
     $data['message'] = '';

@@ -15,6 +15,8 @@ const emailInput = document.querySelector("#email");
 const nameInput = document.querySelector("#name");
 const phoneInput = document.querySelector("#phone");
 const messageInput = document.querySelector("#message");
+const submitBtn = document.querySelector("#submitbtn");
+const formMessage = document.querySelector("#form-message");
 
 const contactForm = document.querySelector("#contact-form");
 
@@ -26,6 +28,7 @@ contactForm.addEventListener("submit", async (e) => {
   console.log(messageInput.value);
 
   const sendEmail = async () => {
+    submitBtn.innerHTML = "Sending...";
     const response = await fetch(
       `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}`,
       {
@@ -39,7 +42,10 @@ contactForm.addEventListener("submit", async (e) => {
     }
 
     const data = await response.json();
-    console.log("data", data);
+
+    submitBtn.innerHTML = "Send message";
+    formMessage.innerHTML = data.message;
+    formMessage.classList.add("show");
   };
 
   await sendEmail();

@@ -126,6 +126,10 @@ label {
   margin-bottom: 1rem;
 }
 
+.show {
+  display: block !important;
+}
+
 /* Header & Navigation */
 header {
   background-color: rgb(242, 242, 242);
@@ -318,4 +322,13 @@ footer {
     grid-template-columns: repeat(2, 1fr);
     text-align: left;
   }
+}
+
+/* Contact Form */
+.form-message {
+  display: none;
+  border: 1px solid #fff;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 5px;
 }
