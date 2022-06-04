@@ -27,7 +27,7 @@ contactForm.addEventListener("submit", async (e) => {
 
   const sendEmail = async () => {
     const response = await fetch(
-      `https://leonvanzyl.com/api/demo.php?name=${nameInput.value}`,
+      `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}`,
       {
         method: "GET",
         headers: {},
