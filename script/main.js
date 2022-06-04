@@ -29,23 +29,30 @@ contactForm.addEventListener("submit", async (e) => {
 
   const sendEmail = async () => {
     submitBtn.innerHTML = "Sending...";
-    const response = await fetch(
-      `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}&email=${emailInput.value}&phone=${phoneInput.value}&message=${messageInput.value}`,
-      {
-        method: "GET",
-        headers: {},
+    try {
+      const response = await fetch(
+        `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}&email=${emailInput.value}&phone=${phoneInput.value}&message=${messageInput.value}`,
+        {
+          method: "GET",
+          headers: {},
+        }
+      );
+
+      if (!response.ok) {
+        console.log("Error");
       }
-    );
 
-    if (!response.ok) {
-      console.log("Error");
+      const data = await response.json();
+
+      submitBtn.innerHTML = "Send message";
+      formMessage.innerHTML = data.message;
+      formMessage.classList.add("show");
+    } catch (error) {
+      submitBtn.innerHTML = "Send message";
+      formMessage.innerHTML =
+        "Sending message failed.  Please try again later.";
+      formMessage.classList.add("show");
     }
-
-    const data = await response.json();
-
-    submitBtn.innerHTML = "Send message";
-    formMessage.innerHTML = data.message;
-    formMessage.classList.add("show");
   };
 
   await sendEmail();
