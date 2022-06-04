@@ -10,7 +10,7 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     $data = array();
     
     // Send email
-    $to = "leonvanzyl@gmail.com";
+    $to = "info@vanzylmedia.com";
     $subject = "Website Enquiry";
     $headers = "From: noreply@vanzylmedia.com";
     
