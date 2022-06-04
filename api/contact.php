@@ -12,7 +12,9 @@ if($_SERVER['REQUEST_METHOD'] === 'GET'){
     // Send email
     $to = "info@vanzylmedia.com";
     $subject = "Website Enquiry";
-    $headers = "From: noreply@vanzylmedia.com";
+    $headers = 'From: noreply@vanzylmedia.com' . "\r\n" .
+    'Reply-To: ' . $_GET['email'] . "\r\n" .
+    'X-Mailer: PHP/' . phpversion();
     
     $body = "NAME: " . $_GET['name'] . "\n\n";
     $body .= "EMAIL: " . $_GET['email'] . "\n\n";

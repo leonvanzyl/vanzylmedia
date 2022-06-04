@@ -30,7 +30,7 @@ contactForm.addEventListener("submit", async (e) => {
   const sendEmail = async () => {
     submitBtn.innerHTML = "Sending...";
     const response = await fetch(
-      `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}`,
+      `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}&email=${emailInput.value}&phone=${phoneInput.value}&message=${messageInput.value}`,
       {
         method: "GET",
         headers: {},
