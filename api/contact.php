@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Origin: *');
 // header('Content-Type: application/json');
 // header('Content-Type: *');
 // header('Content-Type: multipart/form-data');
