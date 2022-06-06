@@ -13,6 +13,7 @@ contactForm.addEventListener("submit", async (e) => {
 
   const sendEmail = async () => {
     submitBtn.innerHTML = "Sending...";
+    submitBtn.setAttribute("disabled", true);
     const url = "https://vanzylmedia.com/api/contact.php";
     try {
       const response = await fetch(url, {
@@ -40,6 +41,11 @@ contactForm.addEventListener("submit", async (e) => {
         "Sending message failed.  Please try again later.";
       formMessage.classList.add("show");
     }
+
+    nameInput.value = "";
+    emailInput.value = "";
+    phoneInput.value = "";
+    messageInput.value = "";
   };
 
   await sendEmail();
