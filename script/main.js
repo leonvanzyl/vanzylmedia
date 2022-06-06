@@ -47,7 +47,7 @@ contactForm.addEventListener("submit", async (e) => {
     phoneInput.value = "";
     messageInput.value = "";
 
-    submitBtn.setAttribute("disabled", false);
+    submitBtn.removeAttribute("disabled");
   };
 
   await sendEmail();
