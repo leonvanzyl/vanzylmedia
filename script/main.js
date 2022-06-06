@@ -13,14 +13,17 @@ contactForm.addEventListener("submit", async (e) => {
 
   const sendEmail = async () => {
     submitBtn.innerHTML = "Sending...";
+    const url = "https://vanzylmedia.com/api/contact.php";
     try {
-      const response = await fetch(
-        `https://vanzylmedia.com/api/contact.php?name=${nameInput.value}&email=${emailInput.value}&phone=${phoneInput.value}&message=${messageInput.value}`,
-        {
-          method: "GET",
-          headers: {},
-        }
-      );
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          name: nameInput.value,
+          email: emailInput.value,
+          phone: phoneInput.value,
+          message: messageInput.value,
+        }),
+      });
 
       if (!response.ok) {
         console.log("Error");

@@ -1,25 +1,27 @@
 <?php
 // header('Access-Control-Allow-Origin: *');
 // header('Content-Type: application/json');
-// header('Content-Type: *');
-// header('Content-Type: multipart/form-data');
 
 
-if($_SERVER['REQUEST_METHOD'] === 'GET'){
+if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
     $data = array();
     
+    // Fetch values from the request body
+    $entityBody = json_decode(file_get_contents('php://input'), true);
+    
+
     // Send email
     $to = "info@vanzylmedia.com";
     $subject = "Website Enquiry";
     $headers = 'From: noreply@vanzylmedia.com' . "\r\n" .
-    'Reply-To: ' . $_GET['email'] . "\r\n" .
+    'Reply-To: ' . htmlspecialchars($entityBody['email']) . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
     
-    $body = "NAME: " . $_GET['name'] . "\n\n";
-    $body .= "EMAIL: " . $_GET['email'] . "\n\n";
-    $body .= "PHONE: " . $_GET['phone'] . "\n\n";
-    $body .= "MESSAGE: " . $_GET['message'] . "\n\n";
+    $body = "NAME: " . htmlspecialchars($entityBody['name']) . "\n\n";
+    $body .= "EMAIL: " . htmlspecialchars($entityBody['email']) . "\n\n";
+    $body .= "PHONE: " . htmlspecialchars($entityBody['phone']) . "\n\n";
+    $body .= "MESSAGE: " . htmlspecialchars($entityBody['message']) . "\n\n";
     
     $data['success'] = false;
     $data['message'] = '';
