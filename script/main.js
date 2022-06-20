@@ -34,18 +34,21 @@ contactForm.addEventListener("submit", async (e) => {
 
       submitBtn.innerHTML = "Send message";
       formMessage.innerHTML = data.message;
-      formMessage.classList.add("show");
     } catch (error) {
       submitBtn.innerHTML = "Send message";
       formMessage.innerHTML =
         "Sending message failed.  Please try again later.";
-      formMessage.classList.add("show");
     }
 
     nameInput.value = "";
     emailInput.value = "";
     phoneInput.value = "";
     messageInput.value = "";
+
+    const messageTimer = setTimeout(() => {
+      formMessage.innerHTML = "";
+      clearTimeout(messageTimer);
+    }, 5000);
 
     submitBtn.removeAttribute("disabled");
   };

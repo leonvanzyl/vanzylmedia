@@ -394,8 +394,10 @@ footer {
 }
 
 /* Contact Form */
-.form-message {
+.form-message:empty {
   display: none;
+}
+.form-message {
   border: 1px solid #fff;
   margin: 1rem 0;
   padding: 1rem;
